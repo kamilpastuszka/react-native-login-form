@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 15,
     borderBottomWidth: 1,
-    width: 260,
+    width: "80%",
     height: 46,
     marginBottom: 20,
     borderBottomWidth: 1
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    width: 260,
+    width: "80%",
     borderRadius: 15
   },
   signupButton: {
