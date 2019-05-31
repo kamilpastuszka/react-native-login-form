@@ -1,29 +1,54 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import React, { Component } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableHighlight
+} from "react-native";
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: ""
+    };
+  }
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+  handleClick() {
+    console.log("state: ", this.state);
+  }
 
-type Props = {};
-export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            keyboardType="email-address"
+            underlineColorAndroid="transparent"
+            onChangeText={email => this.setState({ email })}
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            secureTextEntry={true}
+            underlineColorAndroid="transparent"
+            onChangeText={password => this.setState({ password })}
+          />
+        </View>
+
+        <TouchableHighlight
+          style={[styles.signUpButtonContainer, styles.signupButton]}
+          onPress={() => console.log(this.state)}
+        >
+          <Text style={styles.signUpText}>Sign Up</Text>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -32,18 +57,39 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#192a56"
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  inputContainer: {
+    borderBottomColor: "#F5FCFF",
+    backgroundColor: "#FFFFFF",
+    flexDirection: "row",
+    alignItems: "center",
+    borderRadius: 15,
+    borderBottomWidth: 1,
+    width: 260,
+    height: 46,
+    marginBottom: 20,
+    borderBottomWidth: 1
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  input: {
+    height: 50,
+    flex: 1,
+    textAlign: "center"
   },
+  signUpButtonContainer: {
+    height: 45,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    width: 260,
+    borderRadius: 15
+  },
+  signupButton: {
+    backgroundColor: "#718093"
+  },
+  signUpText: {
+    color: "#FFFFFF"
+  }
 });
